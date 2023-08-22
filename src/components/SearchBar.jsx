@@ -1,10 +1,8 @@
-export default function SearchBar(props) {
-   const {onSearch} = props
-   console.log(onSearch)
-   return (
+export default function SearchBar({searchHandler}) {
+  return (
       <div>
-         <input type='search' />
-         <button onClick={onSearch}>Agregar</button>
+         <input type='search' placeholder="insert id.."/>
+         <button onClick={searchHandler}>Agregar</button>
       </div>
    );
 }
