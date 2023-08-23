@@ -1,5 +1,4 @@
-export default function Card(props) {
-  const {character, onClose} = props
+export default function Card({character, onClose}) {
   return (
     <div className="card">
       <button onClick={onClose} className="buttonX">X</button>

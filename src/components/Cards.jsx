@@ -1,13 +1,11 @@
 import Card from "./Card";
 
-export default function Cards(props) {
-  const { characters } = props;
-  const { onClose } = props;
+export default function Cards({ characters, onClose }) {
   return (
     <div className="cards-container">
-      {
-      characters.map((character) => (
-        <Card character={character} key={character.id} onClose={onClose}/>
+      {characters.map((character) => (
+        <Card character={character} key={character.id} onClose={() => onClose(character.id)}
+        />
       ))}
     </div>
   );
