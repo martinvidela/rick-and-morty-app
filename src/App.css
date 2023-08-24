@@ -1,47 +1,58 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: Helvetica;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
 .App {
-   text-align: center;
+  text-align: center;
 }
 
-:root{
-   background-color: rgb(231, 231, 231);
-   background-image: url('https://cdnb.artstation.com/p/assets/images/images/024/538/827/original/pixel-jeff-clipa-s.gif?1582740711');
-   color: white;
-   font-family: Helvetica;
-   font-weight: bold;
-   
+:root {
+  background-color: rgb(231, 231, 231);
+  background-image: url("https://64.media.tumblr.com/54805606e41234da265775f4ee8631ef/41d4a35f37c5abf1-f6/s1280x1920/c86995ddee2840dabfff99995367a58ed1382687.gif");
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  color: white;
+  background-attachment: fixed;
 }
 
 .cards-container {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   gap: 150px;
-   margin-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 150px;
+  margin-top: 60px;
 }
-.card{
-   
-   background-color: rgba(128, 128, 128, 0.541);
-   border-radius: 6px;
-   backdrop-filter: blur(3px);   
-   box-shadow: 0px 0px 25px #222;
+.card {
+  background-color: rgba(128, 128, 128, 0.541);
+  border-radius: 6px;
+  backdrop-filter: blur(3px);
+  box-shadow: 0px 0px 25px #222;
 }
 
- @media (max-width: 768px) {
-   .cards-container {
-     flex-direction: column; 
-     align-items: center; 
-   }
- }
- .buttonX{
-   width: 40px;
-   padding: 5px;
-   background-color: crimson;
-   border: none;
-   box-shadow: 0px 0px 25px #4b4b4bf6;
-   border-radius: 5px;
-   margin: 10px;
-   font-size: 15px;
-   font-weight: bold;
-   cursor: pointer;
- } 
- 
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.buttonX {
+  width: 40px;
+  padding: 5px;
+  background-color: crimson;
+  border: none;
+  box-shadow: 0px 0px 25px #4b4b4bf6;
+  border-radius: 5px;
+  margin: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}

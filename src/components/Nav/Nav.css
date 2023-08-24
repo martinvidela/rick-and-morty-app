@@ -1,0 +1,37 @@
+.containerNav{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    background-color: rgb(92, 32, 48);
+    padding: 10px ; /* Espaciado interno en la barra */
+    max-height: 50px;
+    margin: 0 auto;
+    margin-top: 20px; 
+    width: 50%;
+    border-radius: 20px;
+
+}
+
+.controls{
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+    text-decoration: none;
+    
+}
+
+.controlsInput{
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.37);
+    border: none;
+    color: rgb(255, 255, 255);
+}
+.controls:hover{
+    background-color: rgba(255, 255, 255, 0.274);
+}

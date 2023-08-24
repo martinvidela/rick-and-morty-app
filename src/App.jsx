@@ -5,7 +5,7 @@ import "./App.css";
 import Cards from "./components/Cards/Cards";
 import { Route, Routes } from "react-router-dom";
 import { About } from "./views/about";
-import { Detail } from "./components/Detail/Detail";
+import { Detail } from "./views/Detail";
 export const App = () => {
   const [characters, setCharacters] = useState([]);
 

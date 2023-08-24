@@ -1,18 +1,19 @@
 import React from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
+import "./Nav.css";
 
 export const Nav = ({ searchHandler, randomHandler }) => {
   return (
-    <div style={{ display: "flex", justifyContent: "end" }}>
+    <div className="containerNav">
       <Link to="/about">
-        <button>About</button>
+        <button className="controls">About</button>
       </Link>
       <Link to="/home">
-      <button>Home</button>
+        <button className="controls">Home</button>
       </Link>
       <SearchBar searchHandler={searchHandler} />
-      <button onClick={randomHandler}>Random</button>
+      <button className="controls" onClick={randomHandler}> Random </button>
     </div>
   );
 };

@@ -8,8 +8,8 @@ export default function SearchBar({ searchHandler }) {
   };
   return (
     <div>
-      <input type="search" placeholder="Insert id.." onChange={handleChange} value={id} />
-      <button onClick={()=>searchHandler(id)}>Add</button>
+      <input className="controlsInput" type="search" placeholder="Insert ID!  ＼ʕ •ᴥ•ʔ／" onChange={handleChange} value={id} />
+      <button className="controls" onClick={()=>searchHandler(id)}>Add</button>
     </div>
   );
 }
