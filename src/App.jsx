@@ -16,7 +16,7 @@ export const App = () => {
   const EMAIL = "marto@gmail.com";
   const PASSWORD = "martolandia1";
 
-  function login(userData) {
+  const login = (userData)=> {
     if (userData.password === PASSWORD && userData.email === EMAIL) {
       setAccess(true);
       navigate("/home");
@@ -26,6 +26,12 @@ export const App = () => {
   useEffect(() => {
     !access && navigate("/");
   }, [access]);
+
+  const logout =()=>{
+    setAccess(false)
+    navigate("/");
+
+  }
 
   const [characters, setCharacters] = useState([]);
 
@@ -59,7 +65,7 @@ export const App = () => {
 
   return (
     <div className="App">
-      <Nav searchHandler={searchHandler} randomHandler={randomHandler} />
+      <Nav searchHandler={searchHandler} randomHandler={randomHandler} logout={logout} />
       <Routes>
         <Route
           path="/home"

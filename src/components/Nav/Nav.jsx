@@ -3,7 +3,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import { Link, useLocation } from "react-router-dom";
 import "./Nav.css";
 
-export const Nav = ({ searchHandler, randomHandler }) => {
+export const Nav = ({ searchHandler, randomHandler, logout }) => {
 
   const location = useLocation()
   const login = location.pathname === '/'
@@ -12,6 +12,7 @@ export const Nav = ({ searchHandler, randomHandler }) => {
   }
   return (
     <div className="containerNav">
+     <button onClick={logout}>Log out</button>
       <div>
       <Link to="/about" className="controls">About</Link>
       <Link to="/home" className="controls">Home</Link>
