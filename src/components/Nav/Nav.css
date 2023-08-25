@@ -7,8 +7,9 @@
     max-height: 50px;
     margin: 0 auto;
     margin-top: 20px; 
-    width: 50%;
+    width: 80%;
     border-radius: 20px;
+    align-items: center;
 
 }
 
@@ -22,7 +23,6 @@
     transition: 0.3s;
     font-size: 15px;
     text-decoration: none;
-    
 }
 
 .controlsInput{

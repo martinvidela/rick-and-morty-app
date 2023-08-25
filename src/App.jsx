@@ -1,12 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Nav } from "./components/Nav/Nav";
 import axios from "axios";
 import "./App.css";
 import Cards from "./components/Cards/Cards";
 import { Route, Routes } from "react-router-dom";
 import { About } from "./views/about";
-import { Detail } from "./views/Detail";
+import { ErrorPage } from "./views/ErrorPage";
+import { Detail } from "./views/detail";
+import { Formulario } from "./components/Formulario/Formulario";
+import { useNavigate } from "react-router-dom";
+
 export const App = () => {
+  const navigate = useNavigate();
+  const [access, setAccess] = useState(false);
+  const EMAIL = "marto@gmail.com";
+  const PASSWORD = "martolandia1";
+
+  function login(userData) {
+    if (userData.password === PASSWORD && userData.email === EMAIL) {
+      setAccess(true);
+      navigate("/home");
+    }
+  }
+
+  useEffect(() => {
+    !access && navigate("/");
+  }, [access]);
+
   const [characters, setCharacters] = useState([]);
 
   const searchHandler = (id) => {
@@ -36,6 +56,7 @@ export const App = () => {
       window.alert("Id repetido");
     }
   };
+
   return (
     <div className="App">
       <Nav searchHandler={searchHandler} randomHandler={randomHandler} />
@@ -44,8 +65,10 @@ export const App = () => {
           path="/home"
           element={<Cards characters={characters} onClose={closeHandler} />}
         />
-        <Route path="/about" element={<About/>}/>
-        <Route path="/detail/:id" element={<Detail/>}/>
+        <Route path="/about" element={<About />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="*" element={<ErrorPage />} />
+        <Route path="/" element={<Formulario login={login} />} />
       </Routes>
     </div>
   );

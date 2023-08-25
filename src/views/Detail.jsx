@@ -9,18 +9,17 @@ export const Detail = () => {
   const [character, setCharacter] = useState({});
 
   useEffect(() => {
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
-      ({ data }) => {
-        if (data.name) {
-          setCharacter(data);
-        } else {
-          window.alert("No hay personajes con ese ID");
-        }
+    axios(
+      `https://rym2-production.up.railway.app/api/character/${id}?key=henrym-martinvidela`).then(({ data }) => {
+      if (data.name) {
+        setCharacter(data);
+      } else {
+        window.alert("No hay personajes con ese ID");
       }
-    );
+    });
     return setCharacter({});
   }, [id]);
-console.log(character)
+  console.log(character);
   return (
     <div>
       <h2>{character.name}</h2>
