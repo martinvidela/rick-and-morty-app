@@ -16,35 +16,41 @@ export const App = () => {
   const EMAIL = "marto@gmail.com";
   const PASSWORD = "martolandia1";
 
-  const login = (userData)=> {
+  const login = (userData) => {
     if (userData.password === PASSWORD && userData.email === EMAIL) {
       setAccess(true);
       navigate("/home");
     }
-  }
+  };
 
   useEffect(() => {
     !access && navigate("/");
   }, [access]);
 
-  const logout =()=>{
-    setAccess(false)
+  const logout = () => {
+    setAccess(false);
     navigate("/");
-
-  }
+  };
 
   const [characters, setCharacters] = useState([]);
 
+  
   const searchHandler = (id) => {
-    axios(
-      `https://rym2-production.up.railway.app/api/character/${id}?key=henrym-martinvidela`
-    ).then(({ data }) => {
-      if (data.name) {
-        setCharacters((oldChars) => [...oldChars, data]);
-      } else {
-        window.alert("¡No hay personajes con este ID!");
-      }
-    });
+  const idNumber = parseInt(id);
+  const idExists = characters.find((character) => character.id === idNumber);
+    if (!idExists) {
+      axios(
+        `https://rym2-production.up.railway.app/api/character/${id}?key=henrym-martinvidela`
+      ).then(({ data }) => {
+        if (data.name) {
+          setCharacters((oldChars) => [...oldChars, data]);
+        } else {
+          window.alert("¡No hay personajes con este ID!");
+        }
+      });
+    } else {
+      window.alert("Personaje ya inssertado");
+    }
   };
 
   const closeHandler = (id) => {
@@ -65,7 +71,11 @@ export const App = () => {
 
   return (
     <div className="App">
-      <Nav searchHandler={searchHandler} randomHandler={randomHandler} logout={logout} />
+      <Nav
+        searchHandler={searchHandler}
+        randomHandler={randomHandler}
+        logout={logout}
+      />
       <Routes>
         <Route
           path="/home"
