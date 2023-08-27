@@ -2,15 +2,12 @@
   padding: 0px;
   margin: 0px;
   font-family: Helvetica;
-  font-weight: bold;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   text-decoration: none;
 }
-.App {
-  text-align: center;
-}
+
 
 :root {
   background-color: rgb(231, 231, 231);

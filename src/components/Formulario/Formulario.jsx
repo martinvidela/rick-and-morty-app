@@ -1,27 +1,24 @@
 import React, { useState } from "react";
+import "./Formulario.css";
 
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const validate = (userData) => {
   let errors = {};
-
   if (!emailRegex.test(userData.email)) {
     errors.email = "Please insert a email";
   }
-
   if (!userData.email) {
     errors.email = "Enter you email";
   }
   if (userData.email.length >= 35) {
     errors.email = "Invalid email";
   }
-
   if (!/\d/.test(userData.password)) {
     errors.password = "Password must contain a number";
   }
-
   if (userData.password.length < 6 || userData.password.length > 10) {
-    errors.password = "Password must be between 6 and 10 characters";
+    errors.password = "Contains 6 and 10 characters";
   }
   return errors;
 };
@@ -54,30 +51,20 @@ export const Formulario = ({ login }) => {
   };
 
   return (
-    <div>
+    <div className="formulario">
+      <h1 style={{color: '#725AC1'}}>Welcome ʕ •ᴥ•ʔ／</h1>
       <form>
-        <div>
-          <label>Email:</label>
-          <input
-            type="text"
-            name="email"
-            placeholder="Insert a email"
-            value={userData.email}
-            onChange={handleChange}
-          />
-          {errors.email ? <p> {errors.email} </p> : null}
+        <div className="username">
+        <input placeholder="Email" type="text" name="email" value={userData.email} onChange={handleChange} />
+             {errors.email ? <p style={{color: '#725AC1', fontSize:'15px', fontWeight:'bold'}}> {errors.email} </p> : null}
         </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={userData.password}
-            onChange={handleChange}
-          />
+        <div className="username">
+        <input placeholder="Password" type="password" name="password"  value={userData.password}onChange={handleChange} />
+        {errors.password ? <p style={{color: '#725AC1', fontSize:'15px', fontWeight:'bold'}}> {errors.password} </p> : null}
+
         </div>
-        <button type="submit" onClick={handleSubmit}>
-          Submit
+        <button className="buttonForm" type="submit" onClick={handleSubmit}>
+          Login
         </button>
       </form>
     </div>
