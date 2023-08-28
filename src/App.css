@@ -11,13 +11,12 @@
 
 :root {
   background-color: rgb(231, 231, 231);
-  background-image: url("https://64.media.tumblr.com/54805606e41234da265775f4ee8631ef/41d4a35f37c5abf1-f6/s1280x1920/c86995ddee2840dabfff99995367a58ed1382687.gif");
+  background-image: url("https://wallpaperaccess.com/full/5927911.gif");
   background-repeat: no-repeat;
   image-rendering: pixelated;
   height: 100vh;
   background-position: center;
   background-size: cover;
-  color: white;
   background-attachment: fixed;
 }
 
@@ -27,12 +26,20 @@
   justify-content: center;
   gap: 150px;
   margin-top: 60px;
+  text-align: center;
+
 }
 .card {
-  background-color: rgba(128, 128, 128, 0.541);
-  border-radius: 6px;
-  backdrop-filter: blur(3px);
+  box-shadow: 0px 0px 30px #747474;
+  border-radius: 10px;
+  width: 400px;
+  backdrop-filter: blur(1px);
   box-shadow: 0px 0px 25px #222;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 1px -1px 60px -26px rgba(255,255,255,1);
+  -webkit-box-shadow: 1px -1px 60px -26px rgba(255,255,255,1);
+  -moz-box-shadow: 1px -1px 60px -26px rgba(255,255,255,1);
 }
 
 @media (max-width: 768px) {
@@ -53,4 +60,17 @@
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.imagenPj{
+  border-radius: 50%;
+}
+
+.halfcard{
+  background-color: white;
+  padding: 20px 10px;
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  
 }

@@ -7,9 +7,9 @@ export default function SearchBar({ searchHandler }) {
       setId(e.target.value)
   };
   return (
-    <div>
+    <div className="searchControls">
       <input className="controlsInput" type="search" placeholder="Insert ID!  ＼ʕ •ᴥ•ʔ／" onChange={handleChange} value={id} />
-      <button className="controls" onClick={()=>searchHandler(id)}>Add</button>
+      <button className="controlsAdd" onClick={()=>searchHandler(id)}>Add</button>
     </div>
   );
 }

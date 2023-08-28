@@ -34,10 +34,9 @@ export const App = () => {
 
   const [characters, setCharacters] = useState([]);
 
-  
   const searchHandler = (id) => {
-  const idNumber = parseInt(id);
-  const idExists = characters.find((character) => character.id === idNumber);
+    const idNumber = parseInt(id);
+    const idExists = characters.find((character) => character.id === idNumber);
     if (!idExists) {
       axios(
         `https://rym2-production.up.railway.app/api/character/${id}?key=henrym-martinvidela`

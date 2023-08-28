@@ -12,9 +12,8 @@ export const Nav = ({ searchHandler, randomHandler, logout }) => {
   }
   return (
     <div className="containerNav">
-     <button onClick={logout}>Log out</button>
+     <button className="logout" onClick={logout}>Log out</button>
       <div>
-      <Link to="/about" className="controls">About</Link>
       <Link to="/home" className="controls">Home</Link>
       </div>
      
