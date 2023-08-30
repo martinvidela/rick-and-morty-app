@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import './Detail.css'
 import React from "react";
 
 export const Detail = () => {
@@ -21,13 +21,13 @@ export const Detail = () => {
   }, [id]);
   console.log(character);
   return (
-    <div>
+    <div className="detailCard">
+      <img className="imagenDetail" src={character.image} alt="" />
       <h2>{character.name}</h2>
       <h2>{character.status}</h2>
       <h2>{character.species}</h2>
       <h2>{character.origin?.name}</h2>
 
-      <img src={character.image} alt="" />
     </div>
   );
 };

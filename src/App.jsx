@@ -1,41 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Nav } from "./components/Nav/Nav";
 import axios from "axios";
 import "./App.css";
 import Cards from "./components/Cards/Cards";
 import { Route, Routes } from "react-router-dom";
-import { About } from "./views/about";
 import { ErrorPage } from "./views/ErrorPage";
-import { Detail } from "./views/detail";
-import { Formulario } from "./components/Formulario/Formulario";
-import { useNavigate } from "react-router-dom";
+import { Detail } from "./views/Detail/Detail";
+import { Favorites } from "./components/Favorites/Favorites";
+import { Start } from "./views/Start/Start";
 
 export const App = () => {
-  const navigate = useNavigate();
-  const [access, setAccess] = useState(false);
-  const EMAIL = "marto@gmail.com";
-  const PASSWORD = "martolandia1";
-
-  const login = (userData) => {
-    if (userData.password === PASSWORD && userData.email === EMAIL) {
-      setAccess(true);
-      navigate("/home");
-    }
-  };
-
-  useEffect(() => {
-    !access && navigate("/");
-  }, [access]);
-
-  const logout = () => {
-    setAccess(false);
-    navigate("/");
-  };
-
+  
   const [characters, setCharacters] = useState([]);
 
   const searchHandler = (id) => {
     const idNumber = parseInt(id);
+
+    if(idNumber > 827){
+      return window.alert("ID does not exist!")
+    }
     const idExists = characters.find((character) => character.id === idNumber);
     if (!idExists) {
       axios(
@@ -44,17 +27,17 @@ export const App = () => {
         if (data.name) {
           setCharacters((oldChars) => [...oldChars, data]);
         } else {
-          window.alert("¡No hay personajes con este ID!");
+          window.alert("There are no characters with this ID!");
         }
       });
     } else {
-      window.alert("Personaje ya inssertado");
+      window.alert("Sorry, you can't repeat a ID");
     }
   };
 
-  const closeHandler = (id) => {
-    const filtrados = characters.filter((character) => character.id !== id);
-    setCharacters(filtrados);
+  const handleClear = () => {
+    setCharacters([])
+
   };
 
   const randomHandler = () => {
@@ -64,7 +47,7 @@ export const App = () => {
       memoria.push(randomId);
       searchHandler(randomId);
     } else {
-      window.alert("Id repetido");
+      window.alert("Sorry, you can't repeat a ID");
     }
   };
 
@@ -73,17 +56,20 @@ export const App = () => {
       <Nav
         searchHandler={searchHandler}
         randomHandler={randomHandler}
-        logout={logout}
+        handleClear={handleClear}
       />
       <Routes>
         <Route
           path="/home"
-          element={<Cards characters={characters} onClose={closeHandler} />}
+          element={<Cards characters={characters} />}
         />
-        <Route path="/about" element={<About />} />
+        <Route
+          path="/favorites"
+          element={<Favorites characters={characters} />}
+        />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="*" element={<ErrorPage />} />
-        <Route path="/" element={<Formulario login={login} />} />
+        <Route path="/" element={<Start />} />
       </Routes>
     </div>
   );
