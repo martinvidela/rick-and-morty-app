@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Nav } from "./components/Nav/Nav";
 import axios from "axios";
 import "./App.css";
@@ -10,34 +10,47 @@ import { Favorites } from "./components/Favorites/Favorites";
 import { Start } from "./views/Start/Start";
 
 export const App = () => {
-  
   const [characters, setCharacters] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://rickandmortyapi.com/api/character/", {
+        params: {
+          page: 1,
+        },
+      })
+      .then(({ data }) => {
+        const firstThreeCharacters = data.results.slice(0, 3);
+        setCharacters(firstThreeCharacters);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   const searchHandler = (id) => {
     const idNumber = parseInt(id);
 
-    if(idNumber > 827){
-      return window.alert("ID does not exist!")
+    if (idNumber > 827) {
+      return window.alert("ID does not exist!");
     }
     const idExists = characters.find((character) => character.id === idNumber);
     if (!idExists) {
-      axios(
-        `https://rym2-production.up.railway.app/api/character/${id}?key=henrym-martinvidela`
-      ).then(({ data }) => {
-        if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
-        } else {
-          window.alert("There are no characters with this ID!");
+      axios(`https://rickandmortyapi.com/api/character/${id}`).then(
+        ({ data }) => {
+          if (data.name) {
+            setCharacters((oldChars) => [...oldChars, data]);
+          } else {
+            window.alert("There are no characters with this ID!");
+          }
         }
-      });
+      );
     } else {
       window.alert("Sorry, you can't repeat a ID");
     }
   };
 
   const handleClear = () => {
-    setCharacters([])
-
+    setCharacters([]);
   };
 
   const randomHandler = () => {
@@ -59,10 +72,7 @@ export const App = () => {
         handleClear={handleClear}
       />
       <Routes>
-        <Route
-          path="/home"
-          element={<Cards characters={characters} />}
-        />
+        <Route path="/home" element={<Cards characters={characters} />} />
         <Route
           path="/favorites"
           element={<Favorites characters={characters} />}

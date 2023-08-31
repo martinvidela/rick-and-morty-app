@@ -5,7 +5,7 @@ export default function Cards({ characters}) {
     <div className="cards-container">
       {
       characters.map((character) => (
-        <Card character={character} id={character.id} 
+        <Card key={character.id} character={character} id={character.id} 
         />
       ))
       }

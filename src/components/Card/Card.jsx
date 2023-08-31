@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { addFav, removeFav } from "../../redux/actions/types";
+import { addFav, removeFav } from "../../redux/actions/action";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-export const Card = ({character, id, addFav, removeFav, myFavorites }) => {
+export const Card = ({ character, id, addFav, removeFav, myFavorites }) => {
 
   const [isFav, setIsFav] = useState(false);
 
@@ -28,12 +28,8 @@ export const Card = ({character, id, addFav, removeFav, myFavorites }) => {
   return (
     <div>
       <div className="card">
-        {isFav ? (
-          <button className="fav" onClick={()=>handleFavorite(character.id)}>❤️</button>
-        ) : (
-          <button className="fav" onClick={()=>handleFavorite(character)}>🤍</button>
-        )}
-     
+        {isFav ? ( <button className="fav" onClick={() => handleFavorite(character.id)}>❤️</button>) 
+               : ( <button className="fav" onClick={() => handleFavorite(character)}>🤍</button>)}
         <Link to={`/detail/${character.id}`}>
           <img className="imagenPj" src={character.image} alt="" />
         </Link>
@@ -59,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Card);
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

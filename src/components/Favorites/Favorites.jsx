@@ -1,22 +1,38 @@
-import React from 'react'
-import {useSelector } from 'react-redux'
-import Card from '../Card/Card'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Card from "../Card/Card";
+import { filterCards, orderCars } from "../../redux/actions/action";
 
 export const Favorites = () => {
-    const favorites = useSelector(state=>state.myFavorites)
-    
+  const [aux, setAux] = useState(false);
+  const favorites = useSelector((state) => state.myFavorites);
+  const dispatch = useDispatch();
+  const handleOrder = (e) => {
+    dispatch(orderCars(e.target.value));
+    setAux(!aux);
+  };
+  const handleFilter = (e) => {
+    dispatch(filterCards(e.target.value));
+  };
   return (
-    <div className='cards-container'>
-        {
-          favorites.map((character)=>{
-            return(
-              <Card
-              character={character} id={character.id} 
-              />
-            )
-          })
-        }
-
+    <div>
+      <div className="selectores">
+      <select onChange={handleOrder}>
+        <option value="A">Highest</option>
+        <option value="B">Lowest</option>
+      </select>
+      <select onChange={handleFilter}>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Genderless">Genderless</option>
+        <option value="unknown">unknown</option>
+      </select>
+      </div>
+      <div className="cards-container">
+        {favorites.map((character) => {
+          return <Card character={character} id={character.id} key={character.id} />;
+        })}
+      </div>
     </div>
-  )
-}
+  );
+};
