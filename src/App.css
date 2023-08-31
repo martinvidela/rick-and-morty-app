@@ -150,3 +150,15 @@
 }
 
 /* BUTTON START FINISH*/
+
+.selectoresContainer{
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+  
+}
+
+.selector{
+  padding: 5px;
+  margin: 3px;
+}

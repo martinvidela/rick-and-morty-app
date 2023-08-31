@@ -16,12 +16,12 @@ export const Favorites = () => {
   };
   return (
     <div>
-      <div className="selectores">
-      <select onChange={handleOrder}>
+      <div className="selectoresContainer">
+      <select className="selector" onChange={handleOrder}>
         <option value="A">Highest</option>
         <option value="B">Lowest</option>
       </select>
-      <select onChange={handleFilter}>
+      <select className="selector" onChange={handleFilter}>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
         <option value="Genderless">Genderless</option>
