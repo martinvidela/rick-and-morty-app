@@ -30,6 +30,7 @@ export const App = () => {
   const searchHandler = (id) => {
     const idNumber = parseInt(id);
 
+
     if (idNumber > 827) {
       return window.alert("ID does not exist!");
     }

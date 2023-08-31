@@ -3,7 +3,8 @@ import SearchBar from "../SearchBar/SearchBar";
 import { Link, useLocation } from "react-router-dom";
 import "./Nav.css";
 
-export const Nav = ({ searchHandler, randomHandler, logout, handleClear }) => {
+export const Nav = ({ searchHandler, randomHandler, handleClear }) => {
+ 
   const location = useLocation();
   const comenzar = location.pathname === "/";
   if (comenzar) {
