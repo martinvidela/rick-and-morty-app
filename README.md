@@ -1,6 +1,6 @@
 # Rick And Morty
 
-## Hi there! Rick And Morty App is an application I developed using React and utilized Redux for state management. 
+Hi there! Rick And Morty App is an application I developed using React and utilized Redux for state management. 
 <br />
 Some functions of the application are:
 * Add a character
