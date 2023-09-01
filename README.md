@@ -5,7 +5,7 @@ Hi there! Rick And Morty App is an application I developed using React and utili
 Some functions of the application are:
 * Add a character
 * Character Detail
-* Clear all characters.
+* Clear all characters
 * Add or remove fav
 * Random character
 
