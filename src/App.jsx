@@ -3,11 +3,10 @@ import { Nav } from "./components/Nav/Nav";
 import axios from "axios";
 import "./App.css";
 import Cards from "./components/Cards/Cards";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { ErrorPage } from "./views/ErrorPage";
 import { Detail } from "./views/Detail/Detail";
 import { Favorites } from "./components/Favorites/Favorites";
-import { Start } from "./views/Start/Start";
 
 export const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -80,7 +79,7 @@ export const App = () => {
         />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="*" element={<ErrorPage />} />
-        <Route path="/" element={<Start />} />
+        <Route path="/" element={<Navigate to='home'/>} />
       </Routes>
     </div>
   );
